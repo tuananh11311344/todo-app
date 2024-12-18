@@ -1,14 +1,14 @@
-import {View, Text, Image} from 'react-native';
 import React from 'react';
 import RowComponent from './RowComponent';
+import {Image, View} from 'react-native';
 import TextComponent from './TextComponent';
 import {colors} from '../constants/colors';
-import { fontFamilies } from '../constants/fontFamilies';
+import {globalStyles} from '../styles/globalStyles';
+import {fontFamilies} from '../constants/fontFamilies';
 
 const AvatarGroup = () => {
   const uidsLength = 10;
-  const imageUrl =
-    'https://gamek.mediacdn.vn/133514250583805952/2022/5/18/photo-1-16528608926331302726659.jpg';
+  const imageUrl = `https://gamek.mediacdn.vn/133514250583805952/2022/5/18/photo-1-16528608926331302726659.jpg`;
   const imageStyle = {
     width: 32,
     height: 32,
@@ -28,6 +28,7 @@ const AvatarGroup = () => {
             />
           ),
       )}
+
       {uidsLength > 3 && (
         <View
           style={[
@@ -36,16 +37,17 @@ const AvatarGroup = () => {
               backgroundColor: 'coral',
               justifyContent: 'center',
               alignItems: 'center',
-              marginLeft: -10
+              borderWidth: 1,
+              marginLeft: -10,
             },
           ]}>
           <TextComponent
             flex={0}
             styles={{
-              lineHeight: 20
+              lineHeight: 19,
             }}
             font={fontFamilies.semiBold}
-            text={` ${uidsLength - 3 > 9 ? 9 : uidsLength - 3}+`}
+            text={`+${uidsLength - 3 > 9 ? 9 : uidsLength - 3}`}
           />
         </View>
       )}

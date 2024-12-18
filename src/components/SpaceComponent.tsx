@@ -8,9 +8,8 @@ interface Props {
 
 const SpaceComponent = (props: Props) => {
   const {width, height} = props;
-  return (
-    <View style={{width: width, height: height}} />
-  );
+
+  return <View style={{width, height}} />;
 };
 
 export default SpaceComponent;
