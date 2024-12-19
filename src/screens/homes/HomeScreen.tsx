@@ -23,9 +23,11 @@ import {colors} from '../../constants/colors';
 import {fontFamilies} from '../../constants/fontFamilies';
 import {globalStyles} from '../../styles/globalStyles';
 import CardImageComponent from '../../components/CardImageComponent';
+import auth from '@react-native-firebase/auth';
 
 const HomeScreen = ({navigation}: any) => {
-  
+  const user = auth().currentUser;
+
   return (
     <View style={{flex: 1}}>
       <Container isScroll>
@@ -41,9 +43,16 @@ const HomeScreen = ({navigation}: any) => {
               style={{
                 flex: 1,
               }}>
-              <TextComponent text="Hi, Jason" />
+              <TextComponent text={`Hi, ${user?.email}`} />
               <TitleComponent text="Be Productive today" />
             </View>
+            <TouchableOpacity>
+              <Logout
+                size={22}
+                color="coral"
+                onPress={async () => auth().signOut()}
+              />
+            </TouchableOpacity>
           </RowComponent>
         </SectionComponent>
         <SectionComponent>
@@ -130,7 +139,7 @@ const HomeScreen = ({navigation}: any) => {
         <SectionComponent>
           <TextComponent
             flex={1}
-            font={fontFamilies.Bold}
+            font={fontFamilies.bold}
             size={21}
             text="Urgents tasks"
           />
