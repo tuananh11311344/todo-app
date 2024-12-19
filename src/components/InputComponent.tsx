@@ -38,7 +38,6 @@ const InputComponent = (props: Props) => {
           globalStyles.inputContainer,
           {
             marginTop: title ? 8 : 0,
-            paddingVertical: 14,
             paddingHorizontal: 10,
             alignItems: 'flex-start',
             minHeight: multible && numberOfLine ? 32 * numberOfLine : 32,
