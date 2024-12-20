@@ -21,6 +21,7 @@ import DocumentPicker, {
 } from 'react-native-document-picker';
 
 const initValue: TaskModel = {
+  id: '',
   title: '',
   description: '',
   dueDate: new Date(),
