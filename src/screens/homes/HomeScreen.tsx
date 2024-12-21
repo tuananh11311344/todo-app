@@ -46,14 +46,14 @@ const HomeScreen = ({navigation}: any) => {
           console.log(`task not found!`);
         } else {
           const items: TaskModel[] = [];
-          snap.forEach((item: any) =>
+          snap.forEach((item: any) => {
             items.push({
-              id: item.id,
               ...item.data(),
-            }),
-          );
-          setIsLoading(false);
+              id: item.id,
+            });
+          });
           setTasks(items);
+          setIsLoading(false);
         }
       });
   };
@@ -119,38 +119,53 @@ const HomeScreen = ({navigation}: any) => {
           <SectionComponent>
             <RowComponent styles={{alignItems: 'flex-start'}}>
               <View style={{flex: 1}}>
-                <CardImageComponent>
-                  <TouchableOpacity
-                    onPress={() => {}}
-                    style={globalStyles.iconContainer}>
-                    <Edit2 size={20} color={colors.white} />
-                  </TouchableOpacity>
-                  <TitleComponent text={tasks[0].title} />
-                  <TextComponent text={tasks[0].description} size={13} />
+                {tasks[0] && (
+                  <CardImageComponent
+                    onPress={() =>
+                      navigation.navigate('TaskDetail', {
+                        id: tasks[0].id,
+                        color: 'rgba(113,72,217,0.9)',
+                      })
+                    }>
+                    <TouchableOpacity
+                      onPress={() => {}}
+                      style={globalStyles.iconContainer}>
+                      <Edit2 size={20} color={colors.white} />
+                    </TouchableOpacity>
+                    <TitleComponent text={tasks[0].title} />
+                    <TextComponent numberOfLine={3} text={tasks[0].description} size={13} />
 
-                  <View style={{marginVertical: 28}}>
-                    <AvatarGroup uids={tasks[0].uids} />
-                    {tasks[0].progress && (
-                      <ProgressBarComponent
-                        percent="70%"
-                        color="#0AACFF"
-                        size="large"
-                      />
-                    )}
-                  </View>
-                  <TextComponent
-                    text={`Due ${(
-                      tasks[0].dueDate as unknown as Timestamp
-                    ).toDate()}`}
-                    size={12}
-                    color={colors.desc}
-                  />
-                </CardImageComponent>
+                    <View style={{marginVertical: 28}}>
+                      <AvatarGroup uids={tasks[0].uids} />
+                      {tasks[0].progress  && tasks[0].progress > 0 && (
+                        <ProgressBarComponent
+                          percent={`${Math.floor(tasks[0].progress * 100)}%`}
+                          color="#0AACFF"
+                          size="large"
+                        />
+                      )}
+                    </View>
+                    <TextComponent
+                      text={`Due ${(
+                        tasks[0].dueDate as unknown as Timestamp
+                      ).toDate()}`}
+                      size={12}
+                      color={colors.desc}
+                    />
+                  </CardImageComponent>
+                )}
               </View>
               <SpaceComponent width={16} />
               <View style={{flex: 1}}>
                 {tasks[1] && (
-                  <CardImageComponent color="rgba(33, 150, 243, 0.9)">
+                  <CardImageComponent
+                    onPress={() =>
+                      navigation.navigate('TaskDetail', {
+                        id: tasks[1].id,
+                        color: 'rgba(33, 150, 243, 0.9)',
+                      })
+                    }
+                    color="rgba(33, 150, 243, 0.9)">
                     <TouchableOpacity
                       onPress={() => {}}
                       style={globalStyles.iconContainer}>
@@ -158,22 +173,33 @@ const HomeScreen = ({navigation}: any) => {
                     </TouchableOpacity>
                     <TitleComponent text={tasks[1].title} size={18} />
                     <AvatarGroup uids={tasks[1].uids} />
-                    {tasks[1].progress && (
-                      <ProgressBarComponent percent="40%" color="#A2F068" />
-                    )}
+                    {tasks[1].progress  && tasks[1].progress > 0 && (
+                        <ProgressBarComponent
+                          percent={`${Math.floor(tasks[1].progress * 100)}%`}
+                          color="#0AACFF"
+                          size="large"
+                        />
+                      )}
                   </CardImageComponent>
                 )}
 
                 <SpaceComponent height={16} />
                 {tasks[2] && (
-                  <CardImageComponent color="rgba(18, 181, 22, 0.9)">
+                  <CardImageComponent
+                    onPress={() =>
+                      navigation.navigate('TaskDetail', {
+                        id: tasks[2].id,
+                        color: 'rgba(18, 181, 22, 0.9)',
+                      })
+                    }
+                    color="rgba(18, 181, 22, 0.9)">
                     <TouchableOpacity
                       onPress={() => {}}
                       style={globalStyles.iconContainer}>
                       <Edit2 size={20} color={colors.white} />
                     </TouchableOpacity>
                     <TitleComponent text={tasks[2].title} />
-                    <TextComponent text={tasks[2].description} size={13} />
+                    <TextComponent numberOfLine={3} text={tasks[2].description} size={13} />
                   </CardImageComponent>
                 )}
               </View>

@@ -1,6 +1,12 @@
 import {ArrowLeft2} from 'iconsax-react-native';
 import React, {ReactNode} from 'react';
-import {ScrollView, TouchableOpacity, View} from 'react-native';
+import {
+  ScrollView,
+  StyleProp,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import {colors} from '../constants/colors';
 import {fontFamilies} from '../constants/fontFamilies';
 import {globalStyles} from '../styles/globalStyles';
@@ -14,25 +20,30 @@ interface Props {
   right?: ReactNode;
   children: ReactNode;
   isScroll?: boolean;
+  styles?: StyleProp<ViewStyle>;
 }
 
 const Container = (props: Props) => {
-  const {title, back, right, children, isScroll} = props;
+  const {title, back, right, children, isScroll, styles} = props;
 
   const navigation: any = useNavigation();
 
   return (
     <View style={[globalStyles.container, {flex: 1}]}>
-
       <RowComponent
-        styles={{
-          paddingHorizontal: 16,
-          paddingBottom: 16,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
+        styles={[
+          {
+            paddingHorizontal: 16,
+            paddingBottom: 30,
+            justifyContent: 'center',
+            alignItems: 'center',
+          },
+          styles,
+        ]}>
         {back && (
-          <TouchableOpacity style={{zIndex: 1}} onPress={() => navigation.goBack()}>
+          <TouchableOpacity
+            style={{zIndex: 1}}
+            onPress={() => navigation.goBack()}>
             <ArrowLeft2 size={24} color={colors.text} />
           </TouchableOpacity>
         )}
@@ -40,7 +51,7 @@ const Container = (props: Props) => {
           {title && (
             <TextComponent
               flex={0}
-              font={fontFamilies.Bold}
+              font={fontFamilies.bold}
               size={16}
               text={title}
               styles={{textAlign: 'center', marginLeft: back ? -24 : 0}}

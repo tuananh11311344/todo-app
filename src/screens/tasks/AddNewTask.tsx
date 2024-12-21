@@ -120,8 +120,8 @@ const AddNewTask = ({navigation}: any) => {
     //   .catch(error => console.log(error));
   };
   return (
-    <Container back title="Add new task" isScroll>
-      <SectionComponent styles={{paddingVertical: 14}}>
+    <Container back title="Add new task" isScroll styles={{paddingTop: 40}}>
+      <SectionComponent>
         <InputComponent
           value={taskDetail.title}
           onChange={val => handleChangeValue('title', val)}

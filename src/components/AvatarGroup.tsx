@@ -12,7 +12,7 @@ interface Props {
 
 const AvatarGroup = (props: Props) => {
   const {uids} = props;
-  const uidsLength = 10;
+  const uidsLength = uids.length;
   const imageUrl = `https://gamek.mediacdn.vn/133514250583805952/2022/5/18/photo-1-16528608926331302726659.jpg`;
   const imageStyle = {
     width: 32,

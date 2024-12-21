@@ -7,5 +7,7 @@ export const colors = {
   blue: '#3168e0',
   white: '#fafafa',
   primary400: "#0AACFF",
-  green300: "#A2F068"
+  green300: "#A2F068",
+  error: "#e74c3c",
+  success: "#00733B"
 };

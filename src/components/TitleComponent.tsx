@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleProp, TextStyle } from 'react-native';
-import { fontFamilies } from '../constants/fontFamilies';
+import {StyleProp, TextStyle} from 'react-native';
+import {fontFamilies} from '../constants/fontFamilies';
 import TextComponent from './TextComponent';
 
 interface Props {
@@ -22,7 +22,12 @@ const TitleComponent = (props: Props) => {
       color={color}
       text={text}
       flex={flex ?? 1}
-      styles={styles}
+      styles={[
+        {
+          marginTop: 4,
+        },
+        styles,
+      ]}
     />
   );
 };

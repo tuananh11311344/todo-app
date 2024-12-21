@@ -21,7 +21,7 @@ const ButtonComponent = (props: Props) => {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: color ? color : isLoading ? colors.grey : colors.blue,
-        padding: 12,
+        padding: 10,
         borderRadius: 14,
       }}>
       {isLoading ? (
